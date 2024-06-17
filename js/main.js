@@ -1,4 +1,4 @@
-let newsAPI =  "https://newsapi.org/v2/top-headlines?country=uk&apiKey=fed343d260de4e4795aeb4314c306d4c";
+let newsAPI =  "https://newsapi.org/v2/top-headlines?country=ua&apiKey=fed343d260de4e4795aeb4314c306d4c";
 let weatheAPi = "";
 
 const fetchRequestLambda = async() => {

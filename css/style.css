@@ -37,7 +37,6 @@ nav.center {
 
 .news {
     display: grid;
-    grid-auto-rows: 250px;
     grid-auto-flow: dense;
     grid-template-columns: auto auto auto;
 }

@@ -1,15 +1,79 @@
-let newsAPI =  "https://newsapi.org/v2/top-headlines?country=ua&apiKey=fed343d260de4e4795aeb4314c306d4c";
+let curPage = 1;
+let newsAPI =  `https://newsapi.org/v2/top-headlines?country=ua&page=${curPage}&apiKey=fed343d260de4e4795aeb4314c306d4c`;
 let weatheAPi = "";
 
-const fetchRequestLambda = async() => {
+class DateUK {
+    constructor(dateString) {
+        this.dateCollection = dateString.split(" ");
+    }
+
+    convert() {
+        let newDate = "";
+
+        newDate += `${this.convertDay()} `;
+        newDate += `${this.dateCollection[2]} `;
+        newDate += `${this.convertMonth()} `;
+        newDate += `${this.dateCollection[3]}`;
+
+        return newDate;
+    }
+
+    convertDay() {
+        if (this.dateCollection[0] == "Mon") {
+            return "Пн";
+        } else if (this.dateCollection[0] == "Tue") {
+            return "Вт";
+        } else if (this.dateCollection[0] == "Wed") {
+            return "Ср";
+        } else if (this.dateCollection[0] == "Thu") {
+            return "Чт";
+        } else if (this.dateCollection[0] == "Fri") {
+            return "Пт";
+        } else if (this.dateCollection[0] == "Sat") {
+            return "Сб";
+        } else if (this.dateCollection[0] == "Sun") {
+            return "Нд";
+        }
+    }
+
+    convertMonth() {
+        if (this.dateCollection[1] == "Jan") {
+            return "Січ";
+        } else if (this.dateCollection[1] == "Feb") {
+            return "Лют";
+        } else if (this.dateCollection[1] == "Mar") {
+            return "Бер";
+        } else if (this.dateCollection[1] == "Apr") {
+            return "Кві";
+        } else if (this.dateCollection[1] == "May") {
+            return "Тра";
+        } else if (this.dateCollection[1] == "Jun") {
+            return "Чер";
+        } else if (this.dateCollection[1] == "Jul") {
+            return "Лип";
+        } else if (this.dateCollection[1] == "Aug") {
+            return "Сер";
+        } else if (this.dateCollection[1] == "Sep") {
+            return "Вер";
+        } else if (this.dateCollection[1] == "Oct") {
+            return "Жов";
+        } else if (this.dateCollection[1] == "Nov") {
+            return "Лис";
+        } else if (this.dateCollection[1] == "Dec") {
+            return "Гру";
+        }
+    }
+}
+
+const fetchRequest = async() => {
     try {
-        const response = await fetch(newsAPI);
+        let response = await fetch(newsAPI);
 
         if (!response.ok) {
-            throw new Error("response was not ok");
+            throw new Error("Something went wrong <=__=>");
         }
 
-        const data = await response.json();
+        let data = await response.json();
 
         showHtml(data);
         
@@ -21,61 +85,64 @@ const fetchRequestLambda = async() => {
 
 const showHtml = (data) => {
     for (let i = 0; i < data.articles.length; i++) {
-        const item = data.articles[i];
+        let item = data.articles[i];
 
-        let card = document.createElement("a");
+        let card_a = document.createElement("a");
 
-        const card_a = document.createElement("div");
-        card.setAttribute("href", item.url);
-        card.setAttribute("class", "card");
+        let card = document.createElement("div");
+        card_a.setAttribute("href", item.url);
+        card_a.setAttribute("class", "card");
 
-        const img = document.createElement("img");
-        card_a.appendChild(img);
+        let img = document.createElement("img");
+        card.appendChild(img);
 
         if (item.urlToImage === null) {
-            card.classList.add("card_none");
+            card_a.classList.add("card_none");
         }
         else {
-            card.classList.add("card_img");
+            card_a.classList.add("card_img");
             img.setAttribute("src", item.urlToImage);
         }
 
-        const title = document.createElement("h3");
-        title.innerText = item.title;
-        card_a.appendChild(title);
+        let title = document.createElement("h3");
+        let titleString = item.title;
 
-        const desc = document.createElement("p");
-        desc.innerText = item.description;
-        card_a.appendChild(desc)
+        if (titleString.length > 50) {
+            titleString = `${titleString.substring(0, 40)}...`;
+        }
+
+        title.innerText = titleString;
+        card.appendChild(title);
+
+        let desc = document.createElement("p");
+        let descString = item.description;
+
+        if (descString != null && descString.length > 60) {
+            descString = `${descString.substring(0, 60)}...`;
+        }
+
+        desc.innerText = descString;
+        card.appendChild(desc)
         
         let publishedDiv = document.createElement("div");
         publishedDiv.classList.add("published");
 
-        const date = document.createElement("p");
-        date.setAttribute("class", "date");
-        date.innerText = item.publishedAt;
-        publishedDiv.appendChild(date);
-
-        let publishedBy = document.createElement("p");
-        publishedBy.innerText = item.author;
-        publishedDiv.appendChild(publishedBy);
-
-        card_a.appendChild(publishedDiv);
-        // const detail = document.createElement("div");
-        // detail.setAttribute("class", "detail");
+        let date_p = document.createElement("p");
+        date_p.setAttribute("class", "date");
         
-        // const link = document.createElement("a");
-        // link.setAttribute("href", item.url);
-        // link.innerText = "Details";
-        // detail.appendChild(link);
+        let dateString = item.publishedAt;
+        let date = new Date(dateString);
+        let dateUk = new DateUK(date.toDateString());
+        
+        date_p.innerText = dateUk.convert();
+        publishedDiv.appendChild(date_p);
 
-        //card.appendChild(detail);
+        card.appendChild(publishedDiv);
+        card_a.appendChild(card);
 
-        card.appendChild(card_a);
-
-        const news = document.querySelector(".news");
-        news.appendChild(card);
+        let news = document.querySelector(".news");
+        news.appendChild(card_a);
     }
 }
 
-fetchRequestLambda();
+fetchRequest();

@@ -107,7 +107,7 @@ const showHtml = (data) => {
         let title = document.createElement("h3");
         let titleString = item.title;
 
-        if (titleString.length > 50) {
+        if (titleString.length > 40) {
             titleString = `${titleString.substring(0, 40)}...`;
         }
 

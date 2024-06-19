@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/weather.css">
+</head>
+<body>
+    <div id="container">
+        <div class="input-container">
+            <input type="text" id="cities">
+            <button onclick="search()">Search</button>
+        </div>
+        <div class="rows" id="row1">
+            <div class="row1">
+                <div class="city" id="city1"></div>
+                <div class="icon" id="icon1"></div>
+                <div class="day" id="day1"></div>
+            </div>
+            <div class="row2">
+                
+                <div class="hours">
+                    <div class="hour">0</div>
+                    <div class="hour">1</div>
+                    <div class="hour">2</div>
+                    <div class="hour">3</div>
+                    <div class="hour">4</div>
+                    <div class="hour">5</div>
+                    <div class="hour">6</div>
+                    <div class="hour">7</div>
+                    <div class="hour">8</div>
+                    <div class="hour">9</div>
+                    <div class="hour">10</div>
+                    <div class="hour">11</div>
+                    <div class="hour">12</div>
+                    <div class="hour">13</div>
+                    <div class="hour">14</div>
+                    <div class="hour">15</div>
+                    <div class="hour">16</div>
+                    <div class="hour">17</div>
+                    <div class="hour">18</div>
+                    <div class="hour">19</div>
+                    <div class="hour">20</div>
+                    <div class="hour">21</div>
+                    <div class="hour">22</div>
+                    <div class="hour">23</div>
+                </div>
+                <div class="temps" id="temps1">
+                    <div class="info">
+                        <div class="icons"></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons"></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons"></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons"></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons"></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons"></div>
+                        <div class="temp"></div>
+                    </div>
+                   
+                    <div class="info">
+                        <div class="icons"></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons"></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons"></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                </div>
+                <div class="details">
+                    <div class="wind"></div>
+                    <div class="prec"></div>
+                    <div class="pres"></div>
+                </div>
+            </div>
+            <div class="row3"></div>
+        </div>
+        <div class="rows" id="row2">
+            <div class="row1">
+                <div class="city" id="city2"></div>
+                <div class="icon" id="icon2"></div>
+                <div class="day" id="day2"></div>
+            </div>
+            <div class="row2">
+                <div class="hours">
+                    <div class="hour">0</div>
+                    <div class="hour">1</div>
+                    <div class="hour">2</div>
+                    <div class="hour">3</div>
+                    <div class="hour">4</div>
+                    <div class="hour">5</div>
+                    <div class="hour">6</div>
+                    <div class="hour">7</div>
+                    <div class="hour">8</div>
+                    <div class="hour">9</div>
+                    <div class="hour">10</div>
+                    <div class="hour">11</div>
+                    <div class="hour">12</div>
+                    <div class="hour">13</div>
+                    <div class="hour">14</div>
+                    <div class="hour">15</div>
+                    <div class="hour">16</div>
+                    <div class="hour">17</div>
+                    <div class="hour">18</div>
+                    <div class="hour">19</div>
+                    <div class="hour">20</div>
+                    <div class="hour">21</div>
+                    <div class="hour">22</div>
+                    <div class="hour">23</div>
+                </div>
+                 <div class="temps" id="temps2">
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons"></div>
+                        <div class="temp"></div>
+                    </div>
+                </div>
+                <div class="details">
+                    <div class="wind"></div>
+                    <div class="prec"></div>
+                    <div class="pres"></div>
+                </div>
+            </div>
+            <div class="row3"></div>
+        </div>
+        <div class="rows" id="row3">
+            <div class="row1">
+                <div class="city" id="city3"></div>
+                <div class="icon" id="icon3"></div>
+                <div class="day" id="day3"></div>
+            </div>
+            <div class="row2">
+                
+                <div class="hours">
+                    <div class="hour">0</div>
+                    <div class="hour">1</div>
+                    <div class="hour">2</div>
+                    <div class="hour">3</div>
+                    <div class="hour">4</div>
+                    <div class="hour">5</div>
+                    <div class="hour">6</div>
+                    <div class="hour">7</div>
+                    <div class="hour">8</div>
+                    <div class="hour">9</div>
+                    <div class="hour">10</div>
+                    <div class="hour">11</div>
+                    <div class="hour">12</div>
+                    <div class="hour">13</div>
+                    <div class="hour">14</div>
+                    <div class="hour">15</div>
+                    <div class="hour">16</div>
+                    <div class="hour">17</div>
+                    <div class="hour">18</div>
+                    <div class="hour">19</div>
+                    <div class="hour">20</div>
+                    <div class="hour">21</div>
+                    <div class="hour">22</div>
+                    <div class="hour">23</div>
+                </div>
+                <div class="temps" id="temps3">
+                    <div class="info">
+                        <div class="icons"></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons"></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons"></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons"  ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                    <div class="info">
+                        <div class="icons" ></div>
+                        <div class="temp"></div>
+                    </div>
+                </div>
+                <div class="details">
+                    <div class="wind"></div>
+                    <div class="prec"></div>
+                    <div class="pres"></div>
+                </div>
+            </div>
+            <div class="row3"></div>
+        </div>
+    </div>
+    <script src="js/weather.js"></script>
+</body>
+</html>

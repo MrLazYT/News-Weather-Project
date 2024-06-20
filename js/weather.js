@@ -131,6 +131,9 @@ function showHtml(data) {
     showIcon(data);
     showDay(data);
     showIcons(data);
+    getWind(data)
+    getPrec(data)
+    getHumadity(data)
 }
 
 
@@ -157,6 +160,40 @@ function search()
     }
 }
 
+
+function getWind(data){
+    const winds = document.querySelectorAll('.wind')
+    
+    for(let i = 0; i<winds.length;i++){
+        let wind = winds[i]
+        wind.innerText = `${data.forecast.forecastday[i].day.
+        maxwind_mph}mph`
+    
+
+        
+    }
+}
+
+function getPrec(data){
+    const precs = document.querySelectorAll('.prec')
+
+    for(let i = 0; i<precs.length;i++){
+        let prec = precs[i]
+        prec.innerText = `${data.forecast.forecastday[i].day.
+            totalprecip_mm
+        }mm`
+
+
+    }
+}
+function getHumadity(data){
+    const humis = document.querySelectorAll('.pres')
+    for(let i = 0; i<humis.length;i++){
+        let humi = humis[i]
+        humi.innerText = `${data.forecast.forecastday[i].day.avghumidity}`
+
+    }
+}
 
 
 fetchRequestLambda()

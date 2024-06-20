@@ -18,6 +18,12 @@ header {
     transform: translate(-50%);
 }
 
+.end {
+    position: absolute;
+    left: 100%;
+    transform: translateX(-105%);
+}
+
 nav.center {
     display: flex;
 }

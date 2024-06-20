@@ -146,3 +146,7 @@ const showHtml = (data) => {
 }
 
 fetchRequest();
+
+function search() {
+    let search_input = document.getElementById("search");
+}

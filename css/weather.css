@@ -1,9 +1,9 @@
-body{
+/* body{
     background-image: url(weather-images/cloud.gif);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-}
+} */
 #container {
     width: 80%;
     height: 800px;
@@ -188,28 +188,11 @@ img {
     margin-top: 5px;
 }
 
-.details {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
 
-.wind, .prec, .pres {
-    width: 20%;
-    border: solid 1px #ccc;
-    padding: 10px;
-    margin: auto;
-    height: 40px;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
+.details{
     display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
+}
 /* Slider controls */
 .slider-control {
     position: absolute;

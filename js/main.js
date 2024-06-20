@@ -1,5 +1,6 @@
 let curPage = 1;
-let newsAPI =  `https://newsapi.org/v2/top-headlines?country=ua&page=${curPage}&apiKey=fed343d260de4e4795aeb4314c306d4c`;
+let curCountry = "ua";
+let newsAPI =  `https://newsapi.org/v2/top-headlines?country=${curCountry}&page=${curPage}&apiKey=fed343d260de4e4795aeb4314c306d4c`;
 let weatheAPi = "";
 
 class DateUK {
@@ -84,6 +85,9 @@ const fetchRequest = async() => {
 }
 
 const showHtml = (data) => {
+    let news = document.querySelector(".news");
+    news.innerText = "";
+    
     for (let i = 0; i < data.articles.length; i++) {
         let item = data.articles[i];
 
@@ -140,13 +144,47 @@ const showHtml = (data) => {
         card.appendChild(publishedDiv);
         card_a.appendChild(card);
 
-        let news = document.querySelector(".news");
         news.appendChild(card_a);
     }
 }
 
+async function loadLangs() {
+    let langJson = "js/jsons/country_codes.json";
+
+    try {
+        let jsonString = await fetch(langJson);
+        let json = await jsonString.json();
+        let select = document.getElementById("lang");
+
+        for (let i = 0; i < json.countries.length; i++) {
+            let option = document.createElement("option");
+            option.innerText = json.countries[i].country.name;
+            option.value = json.countries[i].country.code;
+            option.addEventListener("click", function() {
+                curCountry = this.value;
+                newsAPI =  `https://newsapi.org/v2/top-headlines?country=${curCountry}&page=${curPage}&apiKey=fed343d260de4e4795aeb4314c306d4c`;
+                fetchRequest();
+            });
+
+            select.appendChild(option);
+        }
+
+        select.selectedIndex = 0;
+    } catch {
+        console.log("Something went wrong!");
+    }
+
+}
+
 fetchRequest();
+loadLangs();
 
 function search() {
-    let search_input = document.getElementById("search");
+    let news = document.querySelector(".news");
+    let search_input = document.getElementById("search").value;
+    newsAPI =  `https://newsapi.org/v2/everything?q=${search_input}&page=${curPage}&apiKey=fed343d260de4e4795aeb4314c306d4c`;
+
+    fetchRequest();
 }
+
+let select = document.getElementById("lang");

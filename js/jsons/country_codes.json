@@ -1,138 +1,375 @@
 {
     "countries": [
-        {"country": { "name": "Аргентина", "code": "ar"}},
-        {"country": { "name": "Австралія", "code": "au"}},
-        {"country": { "name": "Австрія", "code": "at"}},
-        {"country": { "name": "Бельгія", "code": "be"}},
-        {"country": { "name": "Бразилія", "code": "br"}},
-        {"country": { "name": "Болгарія", "code": "bg"}},
-        {"country": { "name": "Канада", "code": "ca"}},
-        {"country": { "name": "Китай", "code": "cn"}},
-        {"country": { "name": "Колумбія", "code": "co"}},
-        {"country": { "name": "Куба", "code": "cu"}},
-        {"country": { "name": "Чехія", "code": "cz"}},
-        {"country": { "name": "Єгипет", "code": "eg"}},
-        {"country": { "name": "Франція", "code": "fr"}},
-        {"country": { "name": "Німеччина", "code": "de"}},
-        {"country": { "name": "Греція", "code": "gr"}},
-        {"country": { "name": "Гонконг", "code": "hk"}},
-        {"country": { "name": "Угорщина", "code": "hu"}},
-        {"country": { "name": "Індія", "code": "in"}},
-        {"country": { "name": "Індонезія", "code": "id"}},
-        {"country": { "name": "Ірландія", "code": "ie"}},
-        {"country": { "name": "Ізраїль", "code": "il"}},
-        {"country": { "name": "Італія", "code": "it"}},
-        {"country": { "name": "Японія", "code": "jp"}},
-        {"country": { "name": "Йорданія", "code": "jo"}},
-        {"country": { "name": "Казахстан", "code": "kz"}},
-        {"country": { "name": "Кенія", "code": "ke"}},
-        {"country": { "name": "Кірибаті", "code": "ki"}},
-        {"country": { "name": "Косово", "code": "xk"}},
-        {"country": { "name": "Кувейт", "code": "kw"}},
-        {"country": { "name": "Киргистан", "code": "kg"}},
-        {"country": { "name": "Лаос", "code": "la"}},
-        {"country": { "name": "Латвія", "code": "lv"}},
-        {"country": { "name": "Ліван", "code": "lb"}},
-        {"country": { "name": "Лесото", "code": "ls"}},
-        {"country": { "name": "Ліберія", "code": "lr"}},
-        {"country": { "name": "Лівія", "code": "ly"}},
-        {"country": { "name": "Ліхтенштейн", "code": "li"}},
-        {"country": { "name": "Литва", "code": "lt"}},
-        {"country": { "name": "Люксембург", "code": "lu"}},
-        {"country": { "name": "Аоминь", "code": "mo"}},
-        {"country": { "name": "Македонія", "code": "mk"}},
-        {"country": { "name": "Мадагаскар", "code": "mg"}},
-        {"country": { "name": "Малаві", "code": "mw"}},
-        {"country": { "name": "Малайзія", "code": "my"}},
-        {"country": { "name": "Мальдіви", "code": "mv"}},
-        {"country": { "name": "Малі", "code": "ml"}},
-        {"country": { "name": "Мальта", "code": "mt"}},
-        {"country": { "name": "Мавританія", "code": "mr"}},
-        {"country": { "name": "Маврикій", "code": "mu"}},
-        {"country": { "name": "Майотта", "code": "yt"}},
-        {"country": { "name": "Мексика", "code": "mx"}},
-        {"country": { "name": "Мікронезія", "code": "fm"}},
-        {"country": { "name": "Молдова", "code": "md"}},
-        {"country": { "name": "Монако", "code": "mc"}},
-        {"country": { "name": "Монголія", "code": "mn"}},
-        {"country": { "name": "Монтенеґро", "code": "me"}},
-        {"country": { "name": "Монтсеррат", "code": "ms"}},
-        {"country": { "name": "Марокко", "code": "ma"}},
-        {"country": { "name": "Мозамбік", "code": "mz"}},
-        {"country": { "name": "М'янмар", "code": "mm"}},
-        {"country": { "name": "Німібія", "code": "na"}},
-        {"country": { "name": "Науру", "code": "nr"}},
-        {"country": { "name": "Непал", "code": "np"}},
-        {"country": { "name": "Нідерланди", "code": "nl"}},
-        {"country": { "name": "Нова Каледонія", "code": "nc"}},
-        {"country": { "name": "Нова Зеландія", "code": "nz"}},
-        {"country": { "name": "Нікараґуа", "code": "ni"}},
-        {"country": { "name": "Ніґер", "code": "ne"}},
-        {"country": { "name": "Нігерія", "code": "ng"}},
-        {"country": { "name": "Ніуе", "code": "nu"}},
-        {"country": { "name": "Північна Корея", "code": "kp"}},
-        {"country": { "name": "Норвегія", "code": "no"}},
-        {"country": { "name": "Оман", "code": "om"}},
-        {"country": { "name": "Пакистан", "code": "pk"}},
-        {"country": { "name": "Палау", "code": "pw"}},
-        {"country": { "name": "Палестина", "code": "ps"}},
-        {"country": { "name": "Панама", "code": "pa"}},
-        {"country": { "name": "Папуа-Нова Гвінея", "code": "pg"}},
-        {"country": { "name": "Парагвай", "code": "py"}},
-        {"country": { "name": "Перу", "code": "pe"}},
-        {"country": { "name": "Філіпіни", "code": "ph"}},
-        {"country": { "name": "Польща", "code": "pl"}},
-        {"country": { "name": "Португалія", "code": "pt"}},
-        {"country": { "name": "Пуерто-Ріко", "code": "pr"}},
-        {"country": { "name": "Катар", "code": "qa"}},
-        {"country": { "name": "Конґо", "code": "cg"}},
-        {"country": { "name": "Румунія", "code": "ro"}},
-        {"country": { "name": "Руанда", "code": "rw"}},
-        {"country": { "name": "Самоа", "code": "ws"}},
-        {"country": { "name": "Сан-Марино", "code": "sm"}},
-        {"country": { "name": "Саудівська Аравія", "code": "sa"}},
-        {"country": { "name": "Сенегал", "code": "sn"}},
-        {"country": { "name": "Сербія", "code": "rs"}},
-        {"country": { "name": "Сьєрра-Леоне", "code": "sl"}},
-        {"country": { "name": "Сінгапур", "code": "sg"}},
-        {"country": { "name": "Сінт-Мартен", "code": "sx"}},
-        {"country": { "name": "Словаччина", "code": "sk"}},
-        {"country": { "name": "Словенія", "code": "si"}},
-        {"country": { "name": "Сомалі", "code": "so"}},
-        {"country": { "name": "Південна Африка", "code": "za"}},
-        {"country": { "name": "Південня Корея", "code": "kr"}},
-        {"country": { "name": "Південний Судан", "code": "ss"}},
-        {"country": { "name": "Іспанія", "code": "es"}},
-        {"country": { "name": "Шрі-Ланка", "code": "lk"}},
-        {"country": { "name": "Судан", "code": "sd"}},
-        {"country": { "name": "Суринам", "code": "sr"}},
-        {"country": { "name": "Есватіні", "code": "sz"}},
-        {"country": { "name": "Швеція", "code": "se"}},
-        {"country": { "name": "Швейцарія", "code": "ch"}},
-        {"country": { "name": "Сирія", "code": "sy"}},
-        {"country": { "name": "Тайвань", "code": "tw"}},
-        {"country": { "name": "Таджикистан", "code": "tj"}},
-        {"country": { "name": "Танзанія", "code": "tz"}},
-        {"country": { "name": "Тайланд", "code": "th"}},
-        {"country": { "name": "Того", "code": "tg"}},
-        {"country": { "name": "Токелау", "code": "tk"}},
-        {"country": { "name": "Тонґа", "code": "to"}},
-        {"country": { "name": "Туніс", "code": "tn"}},
-        {"country": { "name": "Туреччина", "code": "tr"}},
-        {"country": { "name": "Туркменістан", "code": "tm"}},
-        {"country": { "name": "Тувалу", "code": "tv"}},
-        {"country": { "name": "Уґанда", "code": "ug"}},
-        {"country": { "name": "Україна", "code": "ua"}},
-        {"country": { "name": "Об'єднані Арабські Емірати", "code": "ae"}},
-        {"country": { "name": "Велика Британія", "code": "gb"}},
-        {"country": { "name": "Солучені Штати Америки", "code": "us"}},
-        {"country": { "name": "Уруґвай", "code": "uy"}},
-        {"country": { "name": "Узбекистан", "code": "uz"}},
-        {"country": { "name": "Вануату", "code": "vu"}},
-        {"country": { "name": "Ватикан", "code": "va"}},
-        {"country": { "name": "Венезуела", "code": "ve"}},
-        {"country": { "name": "В'єтнам", "code": "vn"}},
-        {"country": { "name": "Ємен", "code": "ye"}},
-        {"country": { "name": "Замбія", "code": "zm"}}
+        {
+            "country":
+            {
+                "name": "Аргентина",
+                "code": "ar"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Австралія",
+                "code": "au"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Австрія",
+                "code": "at"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Бельгія",
+                "code": "be"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Бразилія",
+                "code": "br"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Болгарія",
+                "code": "bg"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Канада",
+                "code": "ca"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Китай",
+                "code": "cn"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Колумбія",
+                "code": "co"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Куба",
+                "code": "cu"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Чехія",
+                "code": "cz"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Єгипет",
+                "code": "eg"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Франція",
+                "code": "fr"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Німеччина",
+                "code": "de"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Греція",
+                "code": "gr"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Гонконг",
+                "code": "hk"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Угорщина",
+                "code": "hu"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Індія",
+                "code": "in"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Індонезія",
+                "code": "id"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Ірландія",
+                "code": "ie"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Ізраїль",
+                "code": "il"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Італія",
+                "code": "it"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Японія",
+                "code": "jp"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Латвія",
+                "code": "lv"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Литва",
+                "code": "lt"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Малайзія",
+                "code": "my"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Мексика",
+                "code": "mx"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Марокко",
+                "code": "ma"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Нідерланди",
+                "code": "nl"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Нова Зеландія",
+                "code": "nz"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Нігерія",
+                "code": "ng"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Норвегія",
+                "code": "no"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Філіппіни",
+                "code": "ph"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Польща",
+                "code": "pl"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Португалія",
+                "code": "pt"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Румунія",
+                "code": "ro"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Саудівська Аравія",
+                "code": "sa"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Сербія",
+                "code": "rs"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Сінгапур",
+                "code": "sg"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Словаччина",
+                "code": "sk"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Словенія",
+                "code": "si"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Південна Африка",
+                "code": "za"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Південна Корея",
+                "code": "kr"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Швеція",
+                "code": "se"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Швейцарія",
+                "code": "ch"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Тайвань",
+                "code": "tw"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Таїланд",
+                "code": "th"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Туреччина",
+                "code": "tr"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Україна",
+                "code": "ua"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "ОАЕ",
+                "code": "ae"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Велика Британія",
+                "code": "gb"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "США",
+                "code": "us"
+            }
+        },
+        {
+            "country":
+            {
+                "name": "Венесуела",
+                "code": "ve"
+            }
+        }
     ]
 }

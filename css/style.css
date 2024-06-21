@@ -21,7 +21,19 @@ header {
 .end {
     position: absolute;
     left: 100%;
-    transform: translateX(-105%);
+    transform: translateX(-115%);
+}
+
+.weather {
+    display: flex;
+}
+
+.weather_icon {
+    width: 48px;
+}
+
+.temp {
+    font-size: 20px;
 }
 
 nav.center {

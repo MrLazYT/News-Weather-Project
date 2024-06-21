@@ -1,7 +1,9 @@
 let curPage = 1;
 let curCountry = "ua";
-let newsAPI =  `https://newsapi.org/v2/top-headlines?country=${curCountry}&page=${curPage}&apiKey=fed343d260de4e4795aeb4314c306d4c`;
-let weatheAPi = "";
+let resPerPage = 20;
+let apiKey = "56349878eb5b4a6db52ae07ffa2343cc";
+let newsAPI =  `https://newsapi.org/v2/top-headlines?country=${curCountry}&page=${curPage}&pageSize=${resPerPage}&apiKey=${apiKey}`;
+let weatherAPi = "";
 
 class DateUK {
     constructor(dateString) {
@@ -71,12 +73,13 @@ const fetchRequest = async() => {
         let response = await fetch(newsAPI);
 
         if (!response.ok) {
-            throw new Error("Something went wrong <=__=>");
+            throw new Error("Something went wrong <=__=>", response.status);
         }
 
         let data = await response.json();
 
         showHtml(data);
+        showPagination(data.totalResults);
         
         console.log(data);
     } catch (error) {
@@ -110,41 +113,68 @@ const showHtml = (data) => {
 
         let title = document.createElement("h3");
         let titleString = item.title;
-
-        if (titleString.length > 40) {
-            titleString = `${titleString.substring(0, 40)}...`;
-        }
-
-        title.innerText = titleString;
-        card.appendChild(title);
-
         let desc = document.createElement("p");
         let descString = item.description;
 
+        
+        if (titleString.length > 40) {
+            titleString = `${titleString.substring(0, 40)}...`;
+        }
+        
         if (descString != null && descString.length > 60) {
             descString = `${descString.substring(0, 60)}...`;
         }
 
-        desc.innerText = descString;
-        card.appendChild(desc)
-        
-        let publishedDiv = document.createElement("div");
-        publishedDiv.classList.add("published");
+        let toSkip = false;
 
-        let date_p = document.createElement("p");
-        date_p.setAttribute("class", "date");
-        
-        let dateString = item.publishedAt;
-        let date = new Date(dateString);
-        let dateUk = new DateUK(date.toDateString());
-        
-        date_p.innerText = dateUk.convert();
-        publishedDiv.appendChild(date_p);
+        if (titleString.includes("[Removed]")) {
+            toSkip = true;
+        }
 
-        card.appendChild(publishedDiv);
-        card_a.appendChild(card);
+        if (!toSkip) {
+            title.innerText = titleString;
+            desc.innerText = descString;
+            
+            card.appendChild(title);
+            card.appendChild(desc)
+            
+            let publishedDiv = document.createElement("div");
+            publishedDiv.classList.add("published");
 
-        news.appendChild(card_a);
+            let date_p = document.createElement("p");
+            date_p.setAttribute("class", "date");
+            
+            let dateString = item.publishedAt;
+            let date = new Date(dateString);
+            let dateUk = new DateUK(date.toDateString());
+            
+            date_p.innerText = dateUk.convert();
+            publishedDiv.appendChild(date_p);
+
+            card.appendChild(publishedDiv);
+            card_a.appendChild(card);
+
+            news.appendChild(card_a);
+        }
+    }
+}
+
+function showPagination(totalResults) {
+    let pagination = document.querySelector(".pagination");
+    pagination.innerText = "";
+
+    let pages = Math.ceil(totalResults / resPerPage);
+    
+    for (let i = 0; i < pages; i++) {
+        let page_btn = document.createElement("button");
+        page_btn.innerText = i + 1;
+        page_btn.addEventListener("click", function() {
+            curPage = this.innerText;
+            //newsAPI = `https://newsapi.org/v2/everything?q=${}&page=${curPage}&pageSize=${resPerPage}&apiKey=${apiKey}`;
+            fetchRequest();
+        })
+
+        pagination.appendChild(page_btn);
     }
 }
 
@@ -162,29 +192,28 @@ async function loadLangs() {
             option.value = json.countries[i].country.code;
             option.addEventListener("click", function() {
                 curCountry = this.value;
-                newsAPI =  `https://newsapi.org/v2/top-headlines?country=${curCountry}&page=${curPage}&apiKey=fed343d260de4e4795aeb4314c306d4c`;
+                curPage = 1;
+                newsAPI =  `https://newsapi.org/v2/top-headlines?country=${curCountry}&page=${curPage}&apiKey=${apiKey}`;
                 fetchRequest();
             });
 
             select.appendChild(option);
         }
 
-        select.selectedIndex = 0;
+        select.selectedIndex = 48;
     } catch {
         console.log("Something went wrong!");
     }
-
 }
 
 fetchRequest();
 loadLangs();
 
 function search() {
-    let news = document.querySelector(".news");
     let search_input = document.getElementById("search").value;
-    newsAPI =  `https://newsapi.org/v2/everything?q=${search_input}&page=${curPage}&apiKey=fed343d260de4e4795aeb4314c306d4c`;
+    newsAPI =  `https://newsapi.org/v2/everything?q=${search_input}&page=${curPage}&apiKey=${apiKey}`;
 
     fetchRequest();
 }
 
-let select = document.getElementById("lang");
+select = document.getElementById("lang");

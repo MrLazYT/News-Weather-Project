@@ -1,9 +1,14 @@
 let curPage = 1;
 let curCountry = "ua";
-let resPerPage = 20;
-let apiKey = "56349878eb5b4a6db52ae07ffa2343cc";
-let newsAPI =  `https://newsapi.org/v2/top-headlines?country=${curCountry}&page=${curPage}&pageSize=${resPerPage}&apiKey=${apiKey}`;
-let weatherAPi = "";
+let isSearching = false;
+let search_input = "";
+let category = "general";
+const resPerPage = 20;
+const apiKey = "04e208e9b03e4199892d320ada574970";
+let city = "Kyiv";
+let newsAPI =  `https://newsapi.org/v2/top-headlines?country=${curCountry}&category=${category}&page=${curPage}&pageSize=${resPerPage}&apiKey=${apiKey}`;
+let weatherAPI = `https://api.weatherapi.com/v1/forecast.json?key=b7d554217a3c4c01a0f160353241906&q=${city}&days=3`;
+let ipInfoAPI = "https://ipinfo.io/46.211.248.180/json?token=67f494f196d6c9";
 
 class DateUK {
     constructor(dateString) {
@@ -68,7 +73,7 @@ class DateUK {
     }
 }
 
-const fetchRequest = async() => {
+const fetchNews = async() => {
     try {
         let response = await fetch(newsAPI);
 
@@ -170,19 +175,25 @@ function showPagination(totalResults) {
         page_btn.innerText = i + 1;
         page_btn.addEventListener("click", function() {
             curPage = this.innerText;
-            //newsAPI = `https://newsapi.org/v2/everything?q=${}&page=${curPage}&pageSize=${resPerPage}&apiKey=${apiKey}`;
-            fetchRequest();
+
+            if (isSearching) {
+                newsAPI =  `https://newsapi.org/v2/everything?q=${search_input}&page=${curPage}&apiKey=${apiKey}`;
+            }
+            else {
+                newsAPI =  `https://newsapi.org/v2/top-headlines?country=${curCountry}&page=${curPage}&pageSize=${resPerPage}&apiKey=${apiKey}`;
+            }
+            fetchNews();
         })
 
         pagination.appendChild(page_btn);
     }
 }
 
-async function loadLangs() {
-    let langJson = "js/jsons/country_codes.json";
+async function loadCountries() {
+    let transJson = "js/jsons/country_codes.json";
 
     try {
-        let jsonString = await fetch(langJson);
+        let jsonString = await fetch(transJson);
         let json = await jsonString.json();
         let select = document.getElementById("lang");
 
@@ -192,9 +203,11 @@ async function loadLangs() {
             option.value = json.countries[i].country.code;
             option.addEventListener("click", function() {
                 curCountry = this.value;
+                isSearching = false;
+                search_input = "";
                 curPage = 1;
                 newsAPI =  `https://newsapi.org/v2/top-headlines?country=${curCountry}&page=${curPage}&apiKey=${apiKey}`;
-                fetchRequest();
+                fetchNews();
             });
 
             select.appendChild(option);
@@ -206,14 +219,102 @@ async function loadLangs() {
     }
 }
 
-fetchRequest();
-loadLangs();
+async function fetchShortWeather() {
+    try {
+        let response = await fetch(ipInfoAPI)
+
+        if (!response.ok) {
+            throw new Error("Something went wrong <=__=>", response.status);
+        }
+
+        let data = await response.json();
+        city = data.city;
+
+        let city_p = document.getElementById("city");
+        city_p.innerText = await Transliterate(city);
+
+
+        weatherAPI = `https://api.weatherapi.com/v1/forecast.json?key=b7d554217a3c4c01a0f160353241906&q=${city}&days=3`;
+
+        response = await fetch(weatherAPI);
+
+        if (!response.ok) {
+            throw new Error("Something went wrong <=__=>", response.status);
+        }
+
+        data = await response.json();
+
+        let weatherImg = document.getElementById("weather_icon");
+        weatherImg["src"] = data.current.condition.icon;
+
+        let temp = document.getElementById("temp");
+        temp.innerText = `${data.current.temp_c}°C`;
+    } catch (error) {
+        console.log("Response error: ", error);
+    }
+}
+
+async function Transliterate(text) {
+    let transJson = "js/jsons/transliteration.json";
+    let res = "";
+    text = text.toLowerCase();
+
+    try {
+        let jsonString = await fetch(transJson);
+        let json = await jsonString.json();
+
+        for (let s = 0; s < text.length; ) {
+            let matchFound = false;
+
+            for (let i = 0; i < json.letters.length; i++) {
+                for (let j = 0; j < json.letters[i].letter.lat.length; j++) {
+                    let latSequence = json.letters[i].letter.lat[j];
+
+                    if (text.startsWith(latSequence, s)) {
+                        res += json.letters[i].letter.cyr;
+                        s += latSequence.length;
+                        matchFound = true;
+                        break;
+                    }
+                }
+                if (matchFound) break;
+            }
+
+            if (!matchFound) {
+                res += text[s];
+                s++;
+            }
+        }
+
+        select.selectedIndex = 48;
+    } catch {
+        console.log("Something went wrong!");
+    }
+
+    return capitalize(res);
+}
+
+function capitalize(text) {
+    return text[0].toUpperCase() + text.substring(1, text.length);
+}
+
+loadCountries();
+fetchShortWeather();
+fetchNews();
+
+function categoryHandler(e) {
+    e.preventDefault();
+    category = e.target.id;
+
+    newsAPI = `https://newsapi.org/v2/top-headlines?country=${curCountry}&category=${category}&page=${curPage}&pageSize=${resPerPage}&apiKey=${apiKey}`;
+    fetchNews();
+}
 
 function search() {
-    let search_input = document.getElementById("search").value;
+    search_input = document.getElementById("search").value;
     newsAPI =  `https://newsapi.org/v2/everything?q=${search_input}&page=${curPage}&apiKey=${apiKey}`;
 
-    fetchRequest();
+    fetchNews();
 }
 
 select = document.getElementById("lang");

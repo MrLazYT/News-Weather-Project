@@ -3,36 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News</title>
+    <title>GKGK Новини</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
-        <button>=</button>
+        <select name="lang" id="lang"></select>
         <div class="center">
-            <input id="search" type="text" placeholder="Пошук">
+            <input href="search" type="text" placeholder="Пошук">
             <button onclick="search()">Знайти</button>
         </div>
 
         <div class="end">
-            <select name="lang" id="lang">
-                
-            </select>
+            <div class="weather">
+                <p>Погода в:</p>
+                <p id="city"></p>
+                <img id="weather_icon" class="weather_icon" alt="weather">
+                <p id="temp" class="temp"></p>
+            </div>
         </div>
     </header>
 
     <nav class="nav_left">
-        <a>Головна</p>
-        <a>Спорт</p>
-        <a>Бізнес</p>
-        <a>Погода</a>
+        <a href="" id="general" onclick="categoryHandler(event)">Головна</a>
+        <a href="" id="business" onclick="categoryHandler(event)">Бізнес</a>
+        <a href="" id="entertainment" onclick="categoryHandler(event)">Розваги</a>
+        <a href="" id="health" onclick="categoryHandler(event)">Здоров'я</a>
+        <a href="" id="science" onclick="categoryHandler(event)">Наука</a>
+        <a href="" id="sports" onclick="categoryHandler(event)">Спорт</a>
+        <a href="" id="technology" onclick="categoryHandler(event)">Технології</a>
+        <a href="weather.html">Погода</a>
+        <a href="weather.html">Галерея</a>
     </nav>
 
     <nav class="center">
-        <a>Головна</p>
-        <a>Спорт</p>
-        <a>Бізнес</p>
+        <a href="" id="general" onclick="categoryHandler(event)">Головна</a>
+        <a href="" id="business" onclick="categoryHandler(event)">Бізнес</a>
+        <a href="" id="entertainment" onclick="categoryHandler(event)">Розваги</a>
+        <a href="" id="health" onclick="categoryHandler(event)">Здоров'я</a>
+        <a href="" id="science" onclick="categoryHandler(event)">Наука</a>
+        <a href="" id="sports" onclick="categoryHandler(event)">Спорт</a>
+        <a href="" id="technology" onclick="categoryHandler(event)">Технології</a>
         <a href="weather.html">Погода</a>
+        <a href="weather.html">Галерея</a>
     </nav>
 
     <div class="container">

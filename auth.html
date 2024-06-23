@@ -1,233 +1,69 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Авторизація/Реєстрація</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: bisque;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-        }
-        .container h2 {
-            margin-bottom: 20px;
-        }
-        .container input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        .container button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 10px 0;
-        }
-        .container button:hover {
-            background-color: #0056b3;
-        }
-        .container .link {
-            color: #007BFF;
-            cursor: pointer;
-        }
-        .container .link:hover {
-            text-decoration: underline;
-        }
-        .container .remember-me {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 10px 0;
-        }
-        .container .remember-me input {
-            width: auto;
-            margin-right: 10px;
-        }
-        .container .register-fields {
-            display: none;
-        }
-        .info {
-            font-size: 12px;
-            color: #555;
-            text-align: left;
-            display: none;
-        }
-        .error {
-            color: red;
-            font-size: 12px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <style type="text/css" id="operaUserStyle"></style>
+    <title>Login</title>
 </head>
 <body>
+    <div class="circle"></div>
+    <div class="circle circle_small"></div>
     <div class="container" id="authContainer">
-        <h2 id="authTitle">Авторизація</h2>
-        <input type="email" id="email" placeholder="Електронна пошта">
-        <div id="emailInfo" class="info">Електронна пошта повинна бути в форматі: example@domain.com</div>
-        <input type="password" id="password" placeholder="Пароль">
-        <div id="passwordInfo" class="info">Пароль повинен містити принаймні одну цифру, одну велику літеру, один спеціальний символ і бути від 8 до 20 символів без пробілів або пунктуації.</div>
-        <div class="register-fields">
-            <input type="text" id="fullName" placeholder="Повне ім'я">
-            <input type="text" id="phone" placeholder="Номер телефону">
-            <input type="date" id="dob" placeholder="Дата народження">
+        <h1 id="loginTitle">Login</h1>
+        
+        <form id="loginForm" onsubmit="return false;">
+            <div class="login-fields">
+                <div>
+                    <input class="login-data" type="text" id="email" placeholder="Електронна пошта">
+                </div>
+                
+                <div id="registrationFields" style="display: none;">
+                    <input class="login-data" type="text" id="fullName" placeholder="Повне ім’я">
+                    <input class="login-data" type="text" id="phone" placeholder="Номер телефону">
+                </div>
+
+                <div>
+                    <input class="login-data" type="password" id="password" placeholder="Пароль">
+                </div>
+            
+                <div class="remember-me">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe"> Remember me </label>
+                </div>
+            
+                <button type="submit" id="authButton" onclick="authenticate()"> Sign in </button>
+            </div>
+            
+            <a id="forgotPassword" class="forgot-password" href="#"> Forgot Password? </a>
+        </form>
+    
+        <div class="hr-section">
+            <hr>
+            <p id="or">Or</p>
+            <hr>
         </div>
-        <div class="remember-me">
-            <label for="rememberMe">Запам'ятати мене</label>
-            <input type="checkbox" id="rememberMe">
+    
+        <div class="social-login">
+            <a class="social google"><img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google"></a>
+            <a class="social facebook"><img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook"></a>
+            <a class="social github"><img src="https://img.icons8.com/?size=100&id=3tC9EQumUAuq&format=png&color=FFFFFF" alt="GitHub"></a>
         </div>
-        <button id="authButton" onclick="authenticate()">Увійти</button>
-        <p id="toggleAuth" class="link">Ще не зареєстровані? Зареєструватись</p>
+    
+        <div class="signup">
+            <p id="toggleAuthL"> Don’t have an account? </p>
+            <a id="toggleAuth" href="#" onclick="toggleAuthMode()"> Sign up </a>
+        </div>
+    
+        <div class="footer-links">
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Support</a>
+            <a href="#">Customer Care</a>
+        </div>     
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const cookies = document.cookie.split(';').reduce((cookies, cookie) => {
-                const [name, value] = cookie.split('=').map(c => c.trim());
-                cookies[name] = value;
-                return cookies;
-            }, {});
-
-            if (cookies.email && cookies.password) {
-                document.getElementById('email').value = cookies.email;
-                document.getElementById('password').value = cookies.password;
-                document.getElementById('rememberMe').checked = true;
-            }
-        });
-
-        function setCookie(name, value, days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            const expires = "expires=" + date.toUTCString();
-            document.cookie = name + "=" + value + ";" + expires + ";path=/";
-        }
-
-        function authenticate() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const rememberMe = document.getElementById('rememberMe').checked;
-
-            if (!validateEmail(email)) {
-                alert('Будь ласка, введіть дійсну адресу електронної пошти.');
-                return;
-            }
-            if (!validatePassword(password)) {
-                alert('Пароль повинен містити принаймні одну цифру, одну велику літеру, один спеціальний символ і бути від 8 до 20 символів без пробілів або пунктуації.');
-                return;
-            }
-
-            const cookies = document.cookie.split(';').reduce((cookies, cookie) => {
-                const [name, value] = cookie.split('=').map(c => c.trim());
-                cookies[name] = value;
-                return cookies;
-            }, {});
-
-            if (email && password) {
-                if (cookies.email === email && cookies.password === password) {
-                    if (rememberMe) {
-                        setCookie('email', email, 7);
-                        setCookie('password', password, 7);
-                    }
-                    alert('Успішний вхід!');
-                    window.location.href = 'index.html';
-                } else {
-                    alert('Невірна електронна пошта або пароль.');
-                }
-            } else {
-                alert('Будь ласка, введіть електронну пошту та пароль.');
-            }
-        }
-
-        function register() {
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const dob = document.getElementById('dob').value;
-            const password = document.getElementById('password').value;
-            const rememberMe = document.getElementById('rememberMe').checked;
-
-            if (!validateEmail(email)) {
-                alert('Будь ласка, введіть дійсну адресу електронної пошти.');
-                return;
-            }
-            if (!validatePassword(password)) {
-                alert('Пароль повинен містити принаймні одну цифру, одну велику літеру, один спеціальний символ і бути від 8 до 20 символів без пробілів або пунктуації.');
-                return;
-            }
-
-            if (fullName && email && phone && dob && password) {
-                if (rememberMe) {
-                    setCookie('fullName', fullName, 7);
-                    setCookie('email', email, 7);
-                    setCookie('phone', phone, 7);
-                    setCookie('dob', dob, 7);
-                    setCookie('password', password, 7);
-                }
-                alert('Успішна реєстрація!');
-                window.location.href = 'auth.html';
-            } else {
-                alert('Будь ласка, заповніть всі поля.');
-            }
-        }
-
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
-
-        function validatePassword(password) {
-            const re = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
-            return re.test(password);
-        }
-
-        function toggleAuthMode() {
-            const authTitle = document.getElementById('authTitle');
-            const authButton = document.getElementById('authButton');
-            const toggleAuth = document.getElementById('toggleAuth');
-            const registerFields = document.querySelector('.register-fields');
-            const emailInfo = document.getElementById('emailInfo');
-            const passwordInfo = document.getElementById('passwordInfo');
-
-            if (authTitle.textContent === 'Авторизація') {
-                authTitle.textContent = 'Реєстрація';
-                authButton.textContent = 'Зареєструватись';
-                toggleAuth.textContent = 'Вже зареєстровані? Увійти';
-                registerFields.style.display = 'block';
-                emailInfo.textContent = 'Електронна пошта повинна бути в форматі: example@domain.com';
-                emailInfo.style.display = 'block';
-                passwordInfo.textContent = 'Пароль повинен містити принаймні одну цифру, одну велику літеру, один спеціальний символ і бути від 8 до 20 символів без пробілів або пунктуації.';
-                passwordInfo.style.display = 'block';
-                authButton.onclick = register;
-            } else {
-                authTitle.textContent = 'Авторизація';
-                authButton.textContent = 'Увійти';
-                toggleAuth.textContent = 'Ще не зареєстровані? Зареєструватись';
-                registerFields.style.display = 'none';
-                emailInfo.style.display = 'none';
-                passwordInfo.style.display = 'none';
-                authButton.onclick = authenticate;
-            }
-        }
-
-        document.getElementById('toggleAuth').addEventListener('click', toggleAuthMode);
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>

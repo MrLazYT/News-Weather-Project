@@ -71,9 +71,9 @@ function authenticate()
                     {
                     setCookie('userName', cookies.userName, 7);
                 }
-                if (cookies.phone)
+                if (cookies.confirmPassword)
                     {
-                    setCookie('phone', cookies.phone, 7);
+                    setCookie('confirmPassword', cookies.confirmPassword, 7);
                 }
             }
             alert('Успішний вхід!');
@@ -90,7 +90,7 @@ function register()
 {
     const userName = document.getElementById('userName').value;
     const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
     const password = document.getElementById('password').value;
     const rememberMe = document.getElementById('rememberMe').checked;
 
@@ -104,7 +104,7 @@ function register()
         alert('Будь ласка, введіть дійсну адресу електронної пошти.');
         return;
     }
-    if (!phone)
+    if (!confirmPassword)
         {
         alert('Будь ласка, введіть номер телефону.');
         return;
@@ -115,13 +115,13 @@ function register()
         return;
     }
 
-    if (userName && email && phone && password)
+    if (userName && email && confirmPassword && password)
         {
         if (rememberMe)
             {
             setCookie('userName', userName, 7);
             setCookie('email', email, 7);
-            setCookie('phone', phone, 7);
+            setCookie('confirmPassword', confirmPassword, 7);
             setCookie('password', password, 7);
             console.log(userName)
         }

@@ -1,188 +1,74 @@
-* {
+*
+{
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
 }
 
-html {
+html
+{
     height: 100%;
 }
 
-body {
+body
+{
     display: flex;
+    height: 100%;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
     background-color: black;
+    /* filter: invert(1); */
 }
 
-.container {
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-    margin-top: 30px;
-}
-
-.container h2 {
-    margin-bottom: 20px;
-}
-
-.container input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 0);
-    border: solid 2px rgba(255, 255, 255, 0.2);
-    outline: none;
-}
-
-.container input::placeholder {
-    color: #a0a0a0;
-}
-
-.container button {
-    width: 85%;
-    height: 45px;
-    padding: 10px;
-    margin: auto;
-    font-weight: 500;
-}
-
-.container button:hover {
-    background-color: #0056b3;
-}
-
-.container .link {
-    color: #007BFF;
-    cursor: pointer;
-}
-
-.container .link:hover {
-    text-decoration: underline;
-}
-
-.container .remember-me {
-    color: white;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin: 10px;
-    margin-right: 40%;
-}
-
-.container .remember-me input {
-    width: auto;
-    margin-right: 10px;
-}
-
-.container .remember-me label {
-    margin-top: 3px;
-}
-
-.container .register-fields {
-    display: none;
-    width: 85%;
-    margin: auto;
-    margin-top: 20px;
-    padding: 13px;
-    padding-left: 20px;
-    background-color: rgba(255, 255, 255, 0);
-    border-radius: 12px;
-    outline: none;
-    color: white;
-    font-size: 18px;
-}
-
-.container .info {
-    font-size: 12px;
-    color: #555;
-    text-align: left;
-    display: none;
-}
-
-.container .error {
-    color: red;
-    font-size: 12px;
-}
-
-h1 {
-    color: white;
+h1
+{
     margin-top: 30px;
     text-align: center;
+    color: white;
 }
 
-p {
+label
+{
+    font-size: 12px;
+    color: white;
+}
+
+p
+{
     text-align: center;
     font-size: 13px;
     color: #a0a0a0;
 }
 
-div.container {
-    width: 385px;
-    border: solid 2px rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    backdrop-filter: blur(20px);
-}
-
-div.login-fields {
-    display: grid;
-    grid-template: auto auto auto auto;
-}
-
-
-
-input.login-data {
-    display: block;
-    width: 85%;
-    margin: auto;
-    margin-top: 20px;
-    padding: 13px;
-    padding-left: 20px;
-    background-color: rgba(255, 255, 255, 0);
-    border: solid 2px rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-    outline: none;
-    color: white;
-    font-size: 18px;
-}
-
-input.login-data:last-child {
-    margin-bottom: 0px;
-}
-
-input.login-data::placeholder {
-    color: #a0a0a0;
-}
-
-input.login {
-    background-image: url(https://img.icons8.com/?size=100&id=AZazdsitsrgg&format=png&color=ffffff);
-    background-repeat: no-repeat;
-    background-position: 290px;
-    background-size: 20px;
-}
-
-input.password {
-    background-image: url(images/password.png);
-    background-repeat: no-repeat;
-    background-position: 290px;
-    background-size: 20px;
-}
-
-label {
-    font-size: 16px;
-}
-
-a {
+a
+{
     text-decoration: none;
     color: #a0a0a0;
 }
 
-button[type="submit"] {
+a.forgot-password
+{
+    margin-bottom: 20px;
+    display: block;
+    text-align: center;
+    font-size: 13px;
+}
+
+/*---------------------------------------
+            BUTTONS
+-----------------------------------------*/
+button
+{
+    display: block;
+    width: 85%;
+    height: 45px;
+    margin: auto;
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+button[type="submit"]
+{
     background: linear-gradient(45deg, #6a0dad, #4c0b96, #000071);
     margin-bottom: 20px;
     border: none;
@@ -192,23 +78,124 @@ button[type="submit"] {
     font-size: 16px;
 }
 
-button[type="submit"]:hover {
+button[type="submit"]:hover
+{
     background: linear-gradient(45deg, #490977, #3c0977, #000066);
 }
 
-a.forgot-password {
-    margin-bottom: 20px;
-    display: block;
-    text-align: center;
-    font-size: 13px;
+
+/*---------------------------------------
+            INPUTS
+-----------------------------------------*/
+input.email
+{
+    background-image: url(https://img.icons8.com/?size=100&id=okvpqeYbG0xb&format=png&color=ffffff);
+    background-repeat: no-repeat;
+    background-position: 290px;
+    background-size: 20px;
 }
 
-.hr-section {
+input.login
+{
+    background-image: url(https://img.icons8.com/?size=100&id=AZazdsitsrgg&format=png&color=ffffff);
+    background-repeat: no-repeat;
+    background-position: 290px;
+    background-size: 20px;
+}
+
+input.password
+{
+    background-image: url(images/password.png);
+    background-repeat: no-repeat;
+    background-position: 290px;
+    background-size: 20px;
+}
+
+input.login-data:last-child
+{
+    margin-bottom: 0px;
+}
+
+input.login-data
+{
+    display: block;
+    width: 75%;
+    margin: auto;
+    margin-top: 20px;
+    padding: 13px;
+    padding-left: 20px;
+    background-color: rgba(255, 255, 255, 0);
+    border: solid 2px rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    outline: none;
+    color: white;
+    font-size: 18px;
+}
+/*---------------------------------------
+            END ...
+-----------------------------------------*/
+
+
+div.container
+{
+    width: 385px;
+    border: solid 2px rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+}
+
+div.login-fields
+{
+    display: grid;
+    grid-template: auto auto auto auto;
+}
+
+
+/*---------------------------------------
+            REMEMBER ME
+-----------------------------------------*/
+div.remember-me
+{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 35px;
+}
+
+.remember-me p
+{
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.form-check-input
+{
+    width: 1em;
+    height: 1em;
+    appearance: none;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+    border: solid 1px #7e10cc;
+    border-radius: 0.25em;
+}
+
+.form-check-input:checked
+{
+    background-color: #7e10cc;
+    border-color: #7e10cc;
+}
+
+
+/*---------------------------------------
+            HR
+-----------------------------------------*/
+.hr-section
+{
     display: flex;
     align-items: center;
 }
 
-.hr-section hr {
+.hr-section hr
+{
     width: 30%;
     height: 0.125rem;
     background-color: #a0a0a0;
@@ -218,11 +205,17 @@ a.forgot-password {
     margin-right: auto;
 }
 
-.hr-section p {
+.hr-section p
+{
     margin: -25px;
 }
 
-.social-login {
+
+/*---------------------------------------
+            LOGIN
+-----------------------------------------*/
+.social-login
+{
     display: flex;
     margin-top: 20px;
     margin-left: 35%;
@@ -230,36 +223,51 @@ a.forgot-password {
     margin-bottom: 20px;
 }
 
-.social-login a {
+.social-login a
+{
     cursor: pointer;
 }
 
-.social-login a img {
+.social-login a img
+{
     width: 40px;
     height: 40px;
 }
 
-.signup {
+
+/*---------------------------------------
+            GO TO REGISTER
+-----------------------------------------*/
+.signup
+{
     display: flex;
     justify-content: center;
 }
 
-.signup p {
+.signup p
+{
     margin-right: 8px;
     color: #a0a0a0;
     font-size: 14px;
 }
 
-.signup a {
+.signup a
+{
     color: #fff;
     text-decoration: none;
 }
 
-.signup a:hover {
+.signup a:hover
+{
     text-decoration: underline;
 }
 
-.footer-links {
+
+/*---------------------------------------
+            FOOTER
+-----------------------------------------*/
+.footer-links
+{
     display: flex;
     justify-content: space-between;
     font-size: 12px;
@@ -269,29 +277,111 @@ a.forgot-password {
     margin-bottom: 30px;
 }
 
-.footer-links a {
+.footer-links a
+{
+
     color: #a0a0a0;
     text-decoration: none;
 }
 
-.footer-links a:hover {
+.footer-links a:hover
+{
     text-decoration: underline;
 }
 
-.circle {
+
+/*---------------------------------------
+            CIRCLES
+-----------------------------------------*/
+.circle
+{
     position: fixed;
     top: 5%;
     right: 31%;
     width: 200px;
     height: 200px;
-    background: repeating-linear-gradient(190deg, #5f075f, #00112f);
+    background: repeating-linear-gradient(190deg, #6a0dad, #00112f);
     border-radius: 50%;
 }
 
-.circle_small {
+.circle_small
+{
     top: 71%;
     right: 60%;
     width: 150px;
     height: 150px;
-    background: repeating-linear-gradient(120deg, #5f075f, #00112f);
+    background: repeating-linear-gradient(120deg, #6a0dad, #00112f);
+}
+
+
+/*---------------------------------------
+            LANGUAGE SELECTOR
+----------------------------------------- */
+.language-selector
+{
+    display: inline-block;
+    position: fixed;
+    top: 8%;
+    right: 2%;
+}
+
+.language-selector img
+{
+    width: 36px;
+    height: 36px;
+}
+
+.dropbtn
+{
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+    background-color: transparent;
+    color: black;
+    margin-right: 55px;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn img
+{
+    margin-right: 0; /* Remove margin since we only show the image */
+}
+
+.dropdown-content
+{
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: transparent;
+    border: solid 2px rgba(255, 255, 255, 0.2);
+    min-width: 120px;
+    right: 0; /* Align dropdown to the right */
+}
+
+.dropdown-content a
+{
+    display: flex;
+    padding: 8px 14px;
+    text-decoration: none;
+    align-items: center;
+    color: white;
+}
+
+.dropdown-content a img
+{
+    margin-right: 10px;
+}
+
+.dropdown-content a:hover
+{
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+.language-selector.show .dropdown-content
+{
+    display: flex;
 }

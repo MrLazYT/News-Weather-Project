@@ -11,33 +11,46 @@
 <body>
     <div class="circle"></div>
     <div class="circle circle_small"></div>
+
+    <!-- LANGUAGE SELECTOR -->
+    <div class="language-selector" id="languageSelector">
+        <button class="dropbtn">
+            <img src="https://img.icons8.com/?size=100&id=15532&format=png&color=000000" alt="Language">
+        </button>
+        <div class="dropdown-content">
+            <a href="#" data-lang="en"><img src="https://img.icons8.com/?size=100&id=15532&format=png&color=000000" alt="English"> English</a>
+            <a href="#" data-lang="ua"><img src="https://img.icons8.com/?size=100&id=15538&format=png&color=000000" alt="Ukrainian"> Українська</a>
+        </div>
+    </div>
+
     <div class="container" id="authContainer">
         <h1 id="loginTitle">Login</h1>
         
         <form id="loginForm" onsubmit="return false;">
             <div class="login-fields">
                 <div>
-                    <input class="login-data" type="text" id="email" placeholder="Електронна пошта">
+                    <input class="login-data email" type="text" id="email" placeholder="Email">
                 </div>
                 
                 <div id="registrationFields" style="display: none;">
-                    <input class="login-data" type="text" id="fullName" placeholder="Повне ім’я">
-                    <input class="login-data" type="text" id="phone" placeholder="Номер телефону">
+                    <input class="login-data login" type="text" id="userName" placeholder="Username">
+                    <input class="login-data password" type="password" id="phone" placeholder="Confirm Password">
                 </div>
 
                 <div>
-                    <input class="login-data" type="password" id="password" placeholder="Пароль">
+                    <input class="login-data password" type="password" id="password" placeholder="Password">
                 </div>
             
-                <div class="remember-me">
-                    <input type="checkbox" id="rememberMe">
-                    <label for="rememberMe"> Remember me </label>
+                <div class = "remember-me">
+                    <label for="rememberMe"></label>
+                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                    <p id="reMe">Remember me</p>
                 </div>
             
-                <button type="submit" id="authButton" onclick="authenticate()"> Sign in </button>
+                <button type="submit" id="authButton" onclick="authenticate()">Sign in</button>
             </div>
             
-            <a id="forgotPassword" class="forgot-password" href="#"> Forgot Password? </a>
+            <a id="forgotPassword" class="forgot-password" href="#">Forgot Password </a>
         </form>
     
         <div class="hr-section">
@@ -53,8 +66,8 @@
         </div>
     
         <div class="signup">
-            <p id="toggleAuthL"> Don’t have an account? </p>
-            <a id="toggleAuth" href="#" onclick="toggleAuthMode()"> Sign up </a>
+            <p id="toggleAuthL">Don’t have an account?</p>
+            <a id="reg" href="#" onclick="toggleAuthMode()"> Sign up</a>
         </div>
     
         <div class="footer-links">

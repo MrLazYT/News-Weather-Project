@@ -1,0 +1,19 @@
+{
+    "regTitlePage": "Register",
+    "loginTitlePage": "Login",
+    "regTitle": "Register",
+    "loginTitle": "Login",
+    "userName": "Username",
+    "email": "Email",
+    "phone": "Phone number",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "reMe": "Remember me",
+    "reg": "Sign up",
+    "authButton": "Sign in",
+    "forgotPassword": "Forgot Password?",
+    "or": "Or",
+    "auth": "Sign in",
+    "toggleAuth": "Already Registered?",
+    "toggleAuthL": "Don’t have an account?"
+}

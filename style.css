@@ -91,6 +91,7 @@ input.email
 {
     background-image: url(https://img.icons8.com/?size=100&id=okvpqeYbG0xb&format=png&color=ffffff);
     background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0);
     background-position: 290px;
     background-size: 20px;
 }
@@ -99,6 +100,7 @@ input.login
 {
     background-image: url(https://img.icons8.com/?size=100&id=AZazdsitsrgg&format=png&color=ffffff);
     background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0);
     background-position: 290px;
     background-size: 20px;
 }
@@ -107,6 +109,7 @@ input.password
 {
     background-image: url(images/password.png);
     background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0);
     background-position: 290px;
     background-size: 20px;
 }

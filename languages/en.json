@@ -9,11 +9,12 @@
     "password": "Password",
     "confirmPassword": "Confirm Password",
     "reMe": "Remember me",
-    "reg": "Sign up",
     "authButton": "Sign in",
+    "regButton": "Sign up",
+    "auth": "Sign in",
+    "reg": "Sign up",
     "forgotPassword": "Forgot Password?",
     "or": "Or",
-    "auth": "Sign in",
     "toggleAuth": "Already Registered?",
     "toggleAuthL": "Don’t have an account?"
 }

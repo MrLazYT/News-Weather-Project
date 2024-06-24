@@ -142,12 +142,43 @@ div.container
     border: solid 2px rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     backdrop-filter: blur(20px);
+    transition: all 1s ease;
 }
 
 div.login-fields
 {
     display: grid;
     grid-template: auto auto auto auto;
+}
+
+/*---------------------------------------
+            ANIMATION
+-----------------------------------------*/
+
+div.active {
+    max-height: 200px; /* або інше значення, що забезпечує достатню висоту */
+    opacity: 1;
+    transition: max-height 500ms 150ms ease-in-out, opacity 500ms 150ms ease-in-out;
+}
+
+div.hidden {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 500ms 150ms ease-in-out, opacity 500ms 150ms ease-in-out;
+}
+
+a.active {
+    max-height: 200px; /* або інше значення, що забезпечує достатню висоту */
+    opacity: 1;
+    transition: max-height 500ms 200ms ease-in, opacity 500ms 150ms ease-in;
+}
+
+a.hidden {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 500ms ease-in-out, opacity 500ms 150ms ease-in-out;
 }
 
 
@@ -302,17 +333,44 @@ div.remember-me
     height: 200px;
     background: repeating-linear-gradient(190deg, #6a0dad, #00112f);
     border-radius: 50%;
+    transition: all 700ms ease-in-out;
 }
 
 .circle_small
 {
+    position: fixed;
     top: 71%;
     right: 60%;
     width: 150px;
     height: 150px;
     background: repeating-linear-gradient(120deg, #6a0dad, #00112f);
+    border-radius: 50%;
+    transition: all 700ms ease-in-out;
 }
 
+.circle_move
+{
+    position: fixed;
+    top: 71%;
+    right: 31%;
+    width: 150px;
+    height: 150px;
+    background: repeating-linear-gradient(190deg, #6a0dad, #00112f);
+    border-radius: 50%;
+    transition: all 700ms ease-in-out;
+}
+
+.circle_small_move
+{
+    position: fixed;
+    top: 5%;
+    right: 60%;
+    width: 200px;
+    height: 200px;
+    background: repeating-linear-gradient(120deg, #6a0dad, #00112f);
+    border-radius: 50%;
+    transition: all 700ms ease-in-out;
+}
 
 /*---------------------------------------
             LANGUAGE SELECTOR

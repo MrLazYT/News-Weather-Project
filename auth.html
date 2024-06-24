@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <style type="text/css" id="operaUserStyle"></style>
-    <title>Login</title>
+    <title id="logRegTitlePage">Login</title>
 </head>
 <body>
-    <div class="circle"></div>
-    <div class="circle circle_small"></div>
+    <div id="circle" class="circle"></div>
+    <div id="circle_small" class="circle_small"></div>
 
     <!-- LANGUAGE SELECTOR -->
     <div class="language-selector" id="languageSelector">
@@ -18,13 +18,13 @@
             <img src="https://img.icons8.com/?size=100&id=15532&format=png&color=000000" alt="Language">
         </button>
         <div class="dropdown-content">
-            <a href="#" data-lang="en"><img src="https://img.icons8.com/?size=100&id=15532&format=png&color=000000" alt="English"> English</a>
-            <a href="#" data-lang="ua"><img src="https://img.icons8.com/?size=100&id=15538&format=png&color=000000" alt="Ukrainian"> Українська</a>
+            <a href="#" data-lang="en"><img src="https://img.icons8.com/?size=100&id=15532&format=png&color=000000" alt="English">English</a>
+            <a href="#" data-lang="ua"><img src="https://img.icons8.com/?size=100&id=15538&format=png&color=000000" alt="Ukrainian">Українська</a>
         </div>
     </div>
 
     <div class="container" id="authContainer">
-        <h1 id="loginTitle">Login</h1>
+        <h1 id="logRegTitle">Login</h1>
         
         <form id="loginForm" onsubmit="return false;">
             <div class="login-fields">
@@ -32,9 +32,9 @@
                     <input class="login-data email" type="text" id="email" placeholder="Email">
                 </div>
                 
-                <div id="registrationFields" style="display: none;">
+                <div id="registrationFields" class="hidden">
                     <input class="login-data login" type="text" id="userName" placeholder="Username">
-                    <input class="login-data password" type="password" id="phone" placeholder="Confirm Password">
+                    <input class="login-data password" type="password" id="confirmPassword" placeholder="Confirm Password">
                 </div>
 
                 <div>
@@ -47,10 +47,10 @@
                     <p id="reMe">Remember me</p>
                 </div>
             
-                <button type="submit" id="authButton" onclick="authenticate()">Sign in</button>
+                <button type="submit" id="logRegButton" onclick="authenticate()">Sign in</button>
             </div>
             
-            <a id="forgotPassword" class="forgot-password" href="#">Forgot Password </a>
+            <a id="forgotPassword" class="forgot-password" href="#">Forgot Password</a>
         </form>
     
         <div class="hr-section">
@@ -66,8 +66,8 @@
         </div>
     
         <div class="signup">
-            <p id="toggleAuthL">Don’t have an account?</p>
-            <a id="reg" href="#" onclick="toggleAuthMode()"> Sign up</a>
+            <p id="toggleAuth">Don’t have an account?</p>
+            <a id="authReg" href="#" onclick="toggleAuthMode()">Sign up</a>
         </div>
     
         <div class="footer-links">

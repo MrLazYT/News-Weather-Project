@@ -1,3 +1,6 @@
+let selectedLang = "en";
+let toggleLog = true;
+
 
 function getCookies()
 {
@@ -137,28 +140,35 @@ function register()
 function toggleAuthMode()
 {
     const authTitle = document.getElementById('loginTitle');
-    const authButton = document.getElementById('authButton');
-    const reg = document.getElementById('reg');
+    const authButton = document.getElementById('logRegButton');
     const registrationFields = document.getElementById('registrationFields');
+    const authReg = document.getElementById('authReg');
+    const circle1 = document.getElementById("circle");
+    const circle2 = document.getElementById("circle_small");
+    const forgotPass = document.getElementById("forgotPassword");
 
-    if (authTitle.textContent === 'Login')
-        {
-        authTitle.textContent = 'Registration';
-        authButton.textContent = 'Register';
-        reg.id='reg'
-        reg.textContent = 'Sign Up';
-        registrationFields.style.display = 'block';
+    if (toggleLog)
+    {
+        registrationFields.setAttribute("class", "active");
+        forgotPass.classList.add("hidden");
+        forgotPass.classList.remove("active");
         authButton.setAttribute('onclick', 'register()');
+        toggleLog = false;
+        circle1.setAttribute("class", "circle_move");
+        circle2.setAttribute("class", "circle_small_move");
     }
     else
     {
-        authTitle.textContent = 'Login';
-        authButton.textContent = 'Sign in';
-        reg.id="auth"
-        reg.textContent = 'Sign up';
-        registrationFields.style.display = 'none';
+        registrationFields.setAttribute("class", "hidden");
+        forgotPass.classList.add("active");
+        forgotPass.classList.remove("hidden");
         authButton.setAttribute('onclick', 'authenticate()');
+        toggleLog = true;
+        circle1.setAttribute("class", "circle");
+        circle2.setAttribute("class", "circle_small");
     }
+
+    loadLanguage(selectedLang);
 }
 
 function validateEmail(email)
@@ -206,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function()
         link.addEventListener('click', function(event)
         {
             event.preventDefault();
-            const selectedLang = link.getAttribute('data-lang');
+            selectedLang = link.getAttribute('data-lang');
             const selectedText = link.textContent.trim();
             const selectedImg = link.querySelector('img').src;
 
@@ -221,27 +231,39 @@ document.addEventListener('DOMContentLoaded', function()
         });
     });
 
-    // Function to load language translations
-    function loadLanguage(language)
-    {
-        fetch(`languages/${language}.json`)
-            .then(response => response.json())
-            .then(translations =>
-                {
-                document.getElementById('loginTitle').innerHTML = translations.loginTitle;
-                document.getElementById('loginTitle').innerHTML = translations.loginTitle;
-                document.getElementById('userName').placeholder = translations.userName;
+    // Optional: Load default language on page load
+    loadLanguage(selectedLang);
+});
+
+// Function to load language translations
+function loadLanguage(language)
+{
+    fetch(`languages/${language}.json`)
+        .then(response => response.json())
+        .then(translations =>
+            {
+                if (toggleLog) {
+                    document.getElementById('logRegTitlePage').innerHTML = translations.loginTitlePage;
+                    document.getElementById('logRegTitle').innerHTML = translations.loginTitle;
+                    document.getElementById('logRegButton').innerHTML = translations.authButton;
+                    document.getElementById('authReg').innerText = translations.reg;
+                    document.getElementById('toggleAuth').innerHTML = translations.toggleAuthL;
+                }
+                else {
+                    document.getElementById('logRegTitlePage').innerHTML = translations.regTitlePage;
+                    document.getElementById('logRegTitle').innerHTML = translations.regTitle;
+                    document.getElementById('userName').placeholder = translations.userName;
+                    document.getElementById('confirmPassword').placeholder = translations.confirmPassword;
+                    document.getElementById('logRegButton').innerHTML = translations.regButton;
+                    document.getElementById('authReg').innerHTML = translations.auth;
+                    document.getElementById('toggleAuth').innerHTML = translations.toggleAuth;
+                }
+                
                 document.getElementById('email').placeholder = translations.email;
                 document.getElementById('password').placeholder = translations.password;
-                // document.getElementById('confirmPassword').placeholder = translations.confirmPassword;
-                document.getElementById('or').innerHTML = translations.or;
-                document.getElementById('reg').innerHTML = translations.reg;
-                document.getElementById('authButton').innerHTML = translations.auth;
-            })
-            .catch(error => console.error('Error loading language file:', error));
-    }
-
-    // Optional: Load default language on page load
-    const defaultLanguage = 'en';
-    loadLanguage(defaultLanguage);
-});
+                document.getElementById('reMe').innerText = translations.reMe;
+                document.getElementById('forgotPassword').innerText = translations.forgotPassword;
+                document.getElementById('or').innerText = translations.or;
+        })
+        .catch(error => console.error('Error loading language file:', error));
+}

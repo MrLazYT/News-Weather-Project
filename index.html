@@ -1,63 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GKGK Новини</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <header>
-        <select name="lang" id="lang"></select>
-        <div class="center">
-            <input href="search" type="text" placeholder="Пошук">
-            <button onclick="search()">Знайти</button>
-        </div>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Team</title>
 
-        <div class="end">
-            <div class="weather">
-                <p>Погода в:</p>
-                <p id="city"></p>
-                <img id="weather_icon" class="weather_icon" alt="weather">
-                <p id="temp" class="temp"></p>
+        <!-- CSS FILES -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+        <link href="css/dizorg.min.css" rel="stylesheet">
+        <link href="css/dizorg-icons.css" rel="stylesheet">
+        <link href="css/tooplate.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+        <header class="site-header">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-lg-12 col-12 d-flex flex-wrap">
+                        <p class="d-flex me-4 mb-0">
+                            <i class="bi-newspaper me-2"></i>              <!-- bi-sun-fill bi-cloudy-fill bi-snow -->
+                            Новини
+                            <select class="form-select form-control" name="lang" id="lang"></select>
+                        </p>
+
+                        <div class="center">
+                            <input id="search" class="form-control search-input" href="search" type="text" placeholder="Пошук">
+                            <button class="form-control search" onclick="search()">Знайти</button>
+                        </div>
+
+                        <div class="end">
+                            <div class="weather">
+                                <p>Погода в:</p>
+                                <p id="city"></p>
+                                <img id="weather_icon" class="weather_icon" alt="weather">
+                                <p id="temp" class="temp"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <nav class="nav_left">
-        <a href="" id="general" onclick="categoryHandler(event)">Головна</a>
-        <a href="" id="business" onclick="categoryHandler(event)">Бізнес</a>
-        <a href="" id="entertainment" onclick="categoryHandler(event)">Розваги</a>
-        <a href="" id="health" onclick="categoryHandler(event)">Здоров'я</a>
-        <a href="" id="science" onclick="categoryHandler(event)">Наука</a>
-        <a href="" id="sports" onclick="categoryHandler(event)">Спорт</a>
-        <a href="" id="technology" onclick="categoryHandler(event)">Технології</a>
-        <a href="weather.html">Погода</a>
-        <a href="weather.html">Галерея</a>
-    </nav>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/icons/dev-logo.png" class="logo img-fluid" alt="">
 
-    <nav class="center">
-        <a href="" id="general" onclick="categoryHandler(event)">Головна</a>
-        <a href="" id="business" onclick="categoryHandler(event)">Бізнес</a>
-        <a href="" id="entertainment" onclick="categoryHandler(event)">Розваги</a>
-        <a href="" id="health" onclick="categoryHandler(event)">Здоров'я</a>
-        <a href="" id="science" onclick="categoryHandler(event)">Наука</a>
-        <a href="" id="sports" onclick="categoryHandler(event)">Спорт</a>
-        <a href="" id="technology" onclick="categoryHandler(event)">Технології</a>
-        <a href="weather.html">Погода</a>
-        <a href="weather.html">Галерея</a>
-    </nav>
+                    <span class="ms-2">Team</span>
+                </a>
 
-    <div class="container">
-        <div class="news"></div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-        <div class="ad"></div>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="" id="general" onclick="categoryHandler(event)">Головна</a>
+                        </li>
 
-        <div class="pagination center">
-        </div>
-    </div>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+
+                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                <li class="nav-item">
+                                    <a href="" id="business" onclick="categoryHandler(event)">Бізнес</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" id="entertainment" onclick="categoryHandler(event)">Розваги</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" id="health" onclick="categoryHandler(event)">Здоров'я</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" id="science" onclick="categoryHandler(event)">Наука</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" id="sports" onclick="categoryHandler(event)">Спорт</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" id="technology" onclick="categoryHandler(event)">Технології</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item ms-3">
+                            <a class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn bi-sun-fill" href="#"> Тема</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <section class="hero-section hero-section-full-height d-flex justify-content-center align-items-center" style="width: 100%;">
+                <div class="section-overlay">
+                </div>
+
+                <div class="container" style="width: 100%;">
+                    <div class="row" style="width: 100%;">
+                        <div class="col-lg-7 col-12 text-center mx-auto" style="width: 100%;">
+                            <h1 class="cd-headline rotate-1 text-white mb-4 pb-2" style="width: 100%;">
+                                <span>Досліджуйте світ</span>
+                                <span class="cd-words-wrapper">
+                                    <b class="is-visible">Дивовижні пейзажі природи</b>
+                                    <b>Захоплюючі краєвиди гірських вершин</b>
+                                    <b>Таємничі лісові стежки</b>
+                                    <b>Могутні водоспади</b>
+                                    <b>Тихі озера на світанку</b>
+                                    <b>Золоті піски безкрайніх пляжів</b>
+                                    <b>Різноманіття дикої флори та фауни</b>
+                                    <b>Величні пустелі та їхні таємниці</b>
+                                    <b>Романтичні заходи сонця</b>
+                                    <b>Кришталево чисті гірські річки</b>
+                                </span>
+                            </h1>
+
+                            
+
+                            <a class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll" href="weather.html">
+                                <span>Погода</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#6794d8" fill-opacity="1" d="M0,224L40,229.3C80,235,160,245,240,250.7C320,256,400,256,480,240C560,224,640,192,720,176C800,160,880,160,960,138.7C1040,117,1120,75,1200,80C1280,85,1360,139,1400,165.3L1440,192L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
+            </section>
 
 
-    <script src="js/main.js"></script>
-</body>
+            <!-- <section class="intro-section" id="intro-section">
+                <div class="container">
+                    <div class="row justify-content-lg-center align-items-center">
+
+                        <div class="col-lg-6 col-12">
+                            <h2 class="mb-4">Team</h2>
+
+                            <h7 style="color: #717275;"><strong><a href="links/dev-links.html">«Team»</a></strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ab ad facilis, fuga fugit sapiente inventore quasi commodi! Laboriosam nemo adipisci perspiciatis laborum, cupiditate saepe tenetur voluptatem id earum assumenda? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores velit, est maiores repellat quae atque voluptatum. Autem nemo animi perferendis fugiat nesciunt amet officiis mollitia aliquam saepe harum, similique repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, facere modi, sint dolores quasi aspernatur nisi at dicta nemo, ipsam veniam dolore pariatur minus quidem alias nam totam recusandae distinctio. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium libero tempore officiis ullam sed, quasi nisi sequi quas aliquid hic dolorem itaque. Minus dolorem perferendis rem nostrum quae quidem itaque?</h7>
+                        </div>
+
+                        <div class="col-lg-6 col-12 custom-block-wrap">
+                            <img src="images/second_img4.jpg" class="img-fluid">
+
+                            <div class="custom-block d-flex flex-column">
+                                <h6 class="text-white mb-3">Маєте запитання?<br> Телефонуйте нам:</h6>
+
+                                <p class="d-flex mb-0">
+                                    <i class="bi-telephone-fill custom-icon me-2"></i>
+                                        +380 (68) 868 6868
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+
+
+            <section class="testimonial-section section-padding section-bg">
+                <div class="section-overlay"></div>
+
+                <div class="container container-wrapper">
+                    <div class="container-news">
+                        <div class="col-lg-12 col-12 text-center">
+                            <h2 class="news-title-container">Новини</h2>
+                        </div>
+                        
+                        <div class="news">
+                            <!-- <div class="col-lg-6 col-12">
+                                <div class="featured-block">
+                                    <img src="images/avatar/happy-customer-01.jpg">
+                                    
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="ms-0">
+                                            <h4 class="mb-0 news-text">Марія</h4>
+                                        </div>
+                                    </div>
+    
+                                    <p class="mb-0 news-text news-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                                </div>
+                            </div> -->
+                        </div>
+
+                        <div class="pagination"></div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- <section class="partners-section">
+                <div class="container">
+                    <div class="row justify-content-center align-items-center">
+
+                        <div class="col-lg-12 col-12">
+                            <h4 class="partners-section-title bg-white shadow-lg">Trusted by companies</h4>
+                        </div>
+
+                        <div class="col-lg-2 col-md-4 col-6">
+                            <img src="images/partners/toprak-leasing.svg" class="partners-image img-fluid">
+                        </div>
+
+                        <div class="col-lg-2 col-md-4 col-6">
+                            <img src="images/partners/glorix.svg" class="partners-image img-fluid">
+                        </div>
+
+                        <div class="col-lg-2 col-md-4 col-6">
+                            <img src="images/partners/woocommerce.svg" class="partners-image img-fluid">
+                        </div>
+
+                        <div class="col-lg-2 col-md-4 col-6">
+                            <img src="images/partners/rolf-leasing.svg" class="partners-image img-fluid">
+                        </div>
+
+                        <div class="col-lg-2 col-md-4 col-6">
+                            <img src="images/partners/unilabs.svg" class="partners-image img-fluid">
+                        </div>
+
+                    </div>
+                </div>
+            </section> -->
+        </main>
+
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-12 col-12 d-flex align-items-center mb-3 pb-2">
+                        <div>
+                            <img src="images/icons/dev-logo.png" class="logo img-fluid" alt="">
+                        </div>
+
+                        <ul class="footer-menu d-flex flex-wrap ms-5">
+                            <li class="footer-menu-item"><a href="weather.html" class="footer-menu-link">Weather</a></li>
+                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Blog</a></li>
+                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Reviews</a></li>
+                            <li class="footer-menu-item"><a href="contact.html" class="footer-menu-link">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <h5 class="site-footer-title mb-3">Контакти</h5>
+
+                    <div class="col-lg-12 col-12 d-flex mb-3 flex-wrap">
+                        <p class="d-flex me-4 mb-0 text-white">
+                            <i class="bi-geo-alt-fill me-2"></i>
+                            Адреса Адреса Адреса Адреса
+                        </p>
+
+                        <p class="d-flex me-4 mb-0 text-white" style="margin-left: auto; margin-right: auto;">
+                            <i class="bi-telephone-fill me-2"></i>
+                            +380 (68) 868 6868
+                        </p>
+
+                        <p class="site-header-icon-wrap text-white d-flex mb-0 ms-auto">
+                            <i class="bi-envelope-fill me-2"></i>
+                            news@newsmail.com
+                        </p>
+                    </div>
+
+                    <!-- <ul class="social-icon mt-4">
+                        <li class="social-icon-item">
+                            <a href="links/links.html" class="social-icon-link button button--skoll">
+                                <span><img src="images/icons/links.png" alt="links"> Links</span>
+                            </a>
+                        </li>
+                    </ul> -->
+                </div>
+            </div>
+
+            <div class="site-footer-bottom">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-12">
+                            <p class="copyright-text mb-0">Copyright &copy; <script>document.write(new Date().getFullYear());</script> | Всі права захищено</p>
+                        </div>
+                        
+                        <div class="col-lg-6 col-12 text-end">
+                            <p class="copyright-text mb-0">
+                            // Created by <a href="links/dev-links.html" target="_parent">Team</a> //</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/main.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.backstretch.min.js"></script>
+        <script src="js/animated-headline.js"></script>
+
+    </body>
 </html>

@@ -131,6 +131,7 @@ function showIcons(data) {
         const weat = data.forecast.forecastday[index].day.condition.text;
         let gif = formatWeatherCondition(weat);
         gif_block.style.backgroundImage = `url(css/weathers/${gif}.gif)`;
+        gif_block.style.backgroundSize = 'cover'
         console.log(gif);
     });
 }

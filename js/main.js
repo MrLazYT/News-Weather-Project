@@ -73,6 +73,8 @@ class DateUK {
     }
 }
 
+
+
 const fetchNews = async() => {
     try {
         let response = await fetch(newsAPI);
@@ -98,12 +100,13 @@ const showHtml = (data) => {
     
     for (let i = 0; i < data.articles.length; i++) {
         let item = data.articles[i];
-
+        
         let card_a = document.createElement("a");
+        card_a.setAttribute("href", item.url);
+        card_a.setAttribute("class", "col-lg-6 col-12");
 
         let card = document.createElement("div");
-        card_a.setAttribute("href", item.url);
-        card_a.setAttribute("class", "card");
+        card.setAttribute("class", "card");
 
         let img = document.createElement("img");
         card.appendChild(img);
@@ -113,12 +116,18 @@ const showHtml = (data) => {
         }
         else {
             card_a.classList.add("card_img");
+            img.setAttribute("class", "news-img");
             img.setAttribute("src", item.urlToImage);
         }
 
-        let title = document.createElement("h3");
+        let h4container = document.createElement("div");
+        h4container.setAttribute("class", "ms-0");
+
+        let title = document.createElement("h4");
+        title.setAttribute("class", "mb-0 news-text");
         let titleString = item.title;
         let desc = document.createElement("p");
+        desc.setAttribute("class", "mb-0 news-text news-desc");
         let descString = item.description;
 
         
@@ -140,14 +149,15 @@ const showHtml = (data) => {
             title.innerText = titleString;
             desc.innerText = descString;
             
-            card.appendChild(title);
+            h4container.appendChild(title);
+            card.appendChild(h4container);
             card.appendChild(desc)
             
             let publishedDiv = document.createElement("div");
             publishedDiv.classList.add("published");
 
             let date_p = document.createElement("p");
-            date_p.setAttribute("class", "date");
+            date_p.setAttribute("class", "mb-0 news-text news-desc date");
             
             let dateString = item.publishedAt;
             let date = new Date(dateString);
@@ -173,10 +183,13 @@ function showPagination(totalResults) {
     for (let i = 0; i < pages; i++) {
         let page_btn = document.createElement("button");
         page_btn.innerText = i + 1;
+        page_btn.setAttribute("class", "form-control");
         page_btn.addEventListener("click", function() {
             curPage = this.innerText;
 
-            if (isSearching) {
+            if (category != "general") {
+                newsAPI = `https://newsapi.org/v2/top-headlines?country=${curCountry}&category=${category}&page=${curPage}&pageSize=${resPerPage}&apiKey=${apiKey}`;
+            } else if (isSearching) {
                 newsAPI =  `https://newsapi.org/v2/everything?q=${search_input}&page=${curPage}&apiKey=${apiKey}`;
             }
             else {
@@ -305,12 +318,15 @@ fetchNews();
 function categoryHandler(e) {
     e.preventDefault();
     category = e.target.id;
+    curPage = 1;
 
     newsAPI = `https://newsapi.org/v2/top-headlines?country=${curCountry}&category=${category}&page=${curPage}&pageSize=${resPerPage}&apiKey=${apiKey}`;
     fetchNews();
 }
 
 function search() {
+    isSearching = true;
+    curPage = 1;
     search_input = document.getElementById("search").value;
     newsAPI =  `https://newsapi.org/v2/everything?q=${search_input}&page=${curPage}&apiKey=${apiKey}`;
 
@@ -318,3 +334,67 @@ function search() {
 }
 
 select = document.getElementById("lang");
+
+// import { createClient } from 'pexels';
+
+// const client = createClient('IkuGUOL0DzL6EvC84s9LUTEq2iYJSLKE9vsLGOSgqG3k1Z3rpNdZU9Y6');
+// const query = 'Nature';
+
+// client.photos.search({ query, per_page: 1 }).then(photos => {
+//     for (let i = 0; i < photos.length; i++) {
+//         console.log(photos[i].url);
+//     }
+// });
+
+const pexelsAPI = 'IkuGUOL0DzL6EvC84s9LUTEq2iYJSLKE9vsLGOSgqG3k1Z3rpNdZU9Y6';
+const apiUrl = `https://api.pexels.com/v1/search?query=nature&per_page=10`;
+
+fetch(apiUrl, {
+    headers: {
+        Authorization: pexelsAPI
+    }
+    })
+    .then(response => response.json())
+    .then(data => {
+        let photos = data.photos;
+        let photo_container = document.querySelector(".section-overlay");
+
+        for (let i = 0; i < photos.length; i++) {
+            let img = document.createElement("img");
+            img.classList.add("class", "overlay");
+            img.setAttribute("src", photos[i].src.landscape);
+
+            let firstChild = photo_container.firstChild;
+
+            photo_container.insertBefore(img, firstChild);
+        }
+
+        setImagesSequentially(photos, photos.length - 1); // Почати з першого зображення
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+});
+
+function setImagesSequentially(photos, index) {
+    let imgs = document.querySelectorAll(".overlay");
+    
+    if (index > 0) {
+
+        setTimeout(function() {
+            setTimeout(function() {
+                imgs[index].classList.remove("visible");
+                imgs[index].classList.add('hidden');
+                setImagesSequentially(photos, index - 1);
+            }, 300);
+        }, 2250);
+    } else {
+        setTimeout(function() {
+            for (let i = imgs.length - 1; i > 0; i--) {
+                imgs[i].classList.remove("hidden");
+                imgs[i].classList.add("visible");
+            }
+
+            setImagesSequentially(photos, imgs.length - 1);
+        }, 2250);
+    }
+}

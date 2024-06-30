@@ -77,7 +77,7 @@ function authenticate()
                 }
             }
             alert('Успішний вхід!');
-            window.location.href = 'index.html';
+            window.location.href = '/';
         } else {
             alert('Невірна адреса електронної пошти або пароль.');
         }

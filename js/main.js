@@ -369,7 +369,7 @@ fetch(apiUrl, {
             photo_container.insertBefore(img, firstChild);
         }
 
-        setImagesSequentially(photos, photos.length - 1); // Почати з першого зображення
+        setImagesSequentially(photos, photos.length - 1);
     })
     .catch(error => {
         console.error('Error fetching data:', error);
@@ -398,3 +398,33 @@ function setImagesSequentially(photos, index) {
         }, 2250);
     }
 }
+
+function getCookies()
+{
+    return document.cookie.split(';').reduce((cookies, cookie) =>
+        {
+        const [name, value] = cookie.split('=').map(c => c.trim());
+        cookies[name] = value;
+        return cookies;
+    }, {});
+}
+
+let data = getCookies();
+
+if (data.email == undefined || data.password == undefined)
+{
+    window.location.href = "/auth";
+}
+
+let quitBtn = document.getElementById("quitBtn");
+
+quitBtn.addEventListener("click", function() {
+    document.cookie
+        .split(";")
+        .forEach(
+            function(c)
+            {
+                document.cookie = c.replace(/^ +/, "")
+                    .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+            });
+});
